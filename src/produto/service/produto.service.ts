@@ -7,7 +7,32 @@ import { ProductCategory } from '../utils/ProductCategory.enum';
 
 @Injectable()
 export class ProdutoService {
-  produtos: Produto[] = [];
+  produtos: Produto[] = [
+    {
+      name: 'zxc',
+      price: 10,
+      description: 'Roteador de internet',
+      category: 2,
+      available: true,
+      id: '111',
+    },
+    {
+      name: 'asd',
+      price: 23,
+      description: 'camera',
+      category: 1,
+      available: true,
+      id: '222',
+    },
+    {
+      name: 'qwe',
+      price: 42,
+      description: 'Roteador de internet',
+      category: 0,
+      available: true,
+      id: '333',
+    },
+  ];
 
   create(product: CreateProdutoDto) {
     let produto = new Produto();

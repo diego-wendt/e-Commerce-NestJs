@@ -10,24 +10,20 @@ import {
 import { CarrinhoService } from '../service/carrinho.service';
 import { CreateCarrinhoDto } from '../dto/create-carrinho.dto';
 import { UpdateCarrinhoDto } from '../dto/update-carrinho.dto';
+import { findCarrinhoDto } from '../dto/find-carrinho.dto';
 
 @Controller('carrinho')
 export class CarrinhoController {
   constructor(private readonly carrinhoService: CarrinhoService) {}
 
   @Post()
-  create(@Body() createCarrinhoDto: CreateCarrinhoDto) {
-    return this.carrinhoService.create(createCarrinhoDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.carrinhoService.findAll();
+  create(@Body() carrinho: CreateCarrinhoDto) {
+    return this.carrinhoService.create(carrinho);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.carrinhoService.findOne(+id);
+  findOne(@Param() param: findCarrinhoDto) {
+    return this.carrinhoService.findOne(param.id);
   }
 
   @Patch(':id')
