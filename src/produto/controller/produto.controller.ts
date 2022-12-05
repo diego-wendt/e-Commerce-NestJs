@@ -12,6 +12,7 @@ import { CreateProdutoDto } from '../dto/create-produto.dto';
 import { UpdateProdutoDto } from '../dto/update-produto.dto';
 import { Produto } from '../entities/produto.entity';
 import { FindProductDTO } from '../dto/find-produto.dto';
+import { findCategoryProdutoDto } from '../dto/find-category-produto.dto';
 
 @Controller('produto')
 export class ProdutoController {
@@ -30,6 +31,11 @@ export class ProdutoController {
   @Get(':id')
   findOne(@Param() params: FindProductDTO): Produto {
     return this.produtoService.findOne(params.id);
+  }
+
+  @Get('category/:category')
+  findByCategory(@Param() params: findCategoryProdutoDto) {
+    return this.produtoService.findByCategory(params.category);
   }
 
   @Patch(':id')

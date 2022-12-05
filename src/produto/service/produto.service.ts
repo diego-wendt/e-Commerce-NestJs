@@ -30,6 +30,13 @@ export class ProdutoService {
     return produto;
   }
 
+  findByCategory(category: string) {
+    const productsByCategory = this.produtos.filter(
+      (prod) => prod.category === parseInt(ProductCategory[category]),
+    );
+    return productsByCategory;
+  }
+
   update(id: string, updateProduto: UpdateProdutoDto) {
     const index = this.produtos.findIndex((prod) => prod.id === id);
 
